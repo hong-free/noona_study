@@ -56,12 +56,11 @@ function play() {
 
 function reset() {
   inputArea.value = "";
-
+  history = []
   pickRandomnum();
-  play();
-  // buttonGo.disabled = false;
-  // chance = 3;
-  // chanceArea.textContent = `남은 기회는: ${chance}번`;
-  // resultArea.textContent = "결과값이 여기 나옵니다."
+  buttonGo.disabled = false;
+  chance = 3;
+  chanceArea.textContent = `남은 기회는: ${chance}번`;
+  resultArea.textContent = "결과값이 여기 나옵니다."
 }
 pickRandomnum()
