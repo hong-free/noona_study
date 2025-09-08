@@ -44,6 +44,7 @@ function play() {
   }
 
   history.push(userValue);
+
   if (chance < 1) {
     gameOver = true;
   }
@@ -56,10 +57,12 @@ function play() {
 function reset() {
   inputArea.value = "";
   pickRandomnum();
+  buttonGo.disabled = false;
+  history = []
   chance = 3;
   chanceArea.textContent = `남은 기회는: ${chance}번`;
-  history = []
-  buttonGo.disabled = true;
+  history.push(userValue);
+
 
   resultArea.textContent = "결과값이 여기 나옵니다."
 
