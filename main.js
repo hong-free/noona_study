@@ -59,7 +59,7 @@ function reset() {
   chance = 3;
   chanceArea.textContent = `남은 기회는: ${chance}번`;
   history = []
-  buttonGo.disabled = false;
+  buttonGo.disabled = true;
 
   resultArea.textContent = "결과값이 여기 나옵니다."
 
