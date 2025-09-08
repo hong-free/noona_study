@@ -58,7 +58,6 @@ function reset() {
   inputArea.value = "";
 
   pickRandomnum();
-
   play();
   // buttonGo.disabled = false;
   // chance = 3;
