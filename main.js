@@ -55,12 +55,9 @@ function play() {
 
 function reset() {
   inputArea.value = "";
-  buttonGo.disabled = false;
   pickRandomnum();
-  
   chanceArea.textContent = `남은 기회는: ${chance}번`;
   resultArea.textContent = "결과값이 여기 나옵니다."
-
 
 }
 pickRandomnum()
