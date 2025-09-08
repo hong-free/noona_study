@@ -51,6 +51,6 @@ h1{
   font-size: 18px;
 
 } */
- button{
+#play-button, #reset-button{
   padding: 10px;
  }
