@@ -4,42 +4,43 @@ let taskList = []
 addButton.addEventListener("click", addTask);
 
 function addTask() {
+
   let task = {
     id: randomIDGenerate(),
     taskContent: taskInput.value,
     isComplete: false
   }
-  taskList.push(task);
-
+  let taskContent = taskInput.value
+  taskList.push(task)
+  console.log(taskContent)
   render();
 }
 
 function render() {
-  let resultHtml = "";
+  let resultHtml = '';
   for (let i = 0; i < taskList.length; i++) {
     if (taskList[i].isComplete == true) {
-      resultHtml += `<div class="task">
+      resultHtml +=
+        `<div class="task">
       <div class="task-done">${taskList[i].taskContent}</div>
         <div>
-          <button onclick="toggleComplete(`${ taskList[i].id } `)">Check</button>
-          <button onclick="deleteTask(`${ taskList[i].id } `) ">Delete</button>
+          <button onclick="toggleComplete('${taskList[i].id}')">Check</button>
+          <button onclick="deleteTask('${taskList[i].id}')">Delete</button>
         </div >
-        </div > `
+        </div > `;
     } else {
-      resultHtml += `< div class="task" >
+      resultHtml += `<div class="task">
       <div>${taskList[i].taskContent}</div>
         <div>
-          <button onclick= "toggleComplete(`${ taskList[i].id } ` )">Check</button>
-          <button onclick="deleteTask(`${ taskList[i].id } `)">Delete</button>
-        </div>
-        <div/ > `
+          <button onclick="toggleComplete('${taskList[i].id}')">Check</button>
+          <button onclick="deleteTask('${taskList[i].id}')">Delete</button>
+        </div >
+        </div > `
     }
-
   }
 
   document.getElementById("task-board").innerHTML = resultHtml;
 }
-
 function toggleComplete(id) {
   for (let i = 0; i < taskList.length; i++) {
     if (taskList[i].id == id) {
@@ -47,16 +48,24 @@ function toggleComplete(id) {
       break;
     }
   }
-  render()
+  render();
 }
+function randomIDGenerate() {
+  return "_" + Math.random().toString(36).substring(2, 9);
+}
+
 function deleteTask(id) {
   for (let i = 0; i < taskList.length; i++) {
     if (taskList[i].id == id) {
       taskList.splice(i, 1);
     }
-  }
-  render()
+  } render()
 }
-function randomIDGenerate() {
-  return '_' + Math.random().toString(36).substring(2, 9);
-}
+
+
+
+
+
+
+
+
