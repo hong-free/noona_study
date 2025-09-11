@@ -26,7 +26,7 @@ h1{
   text-align: center;
   margin: 30px;
 }
-/*입력창*/
+/*입력창 #####################*/
 .input-area{
  display: flex;
  margin-bottom: 10px;
@@ -36,7 +36,6 @@ h1{
   padding: 10px;
   margin-right: -6px;
   border:none;
-  background-color: #eee;
   border-radius: 10px 0 0 10px;
   box-sizing: border-box;
   outline: none;
@@ -49,6 +48,7 @@ h1{
   font-style: italic;
   opacity: 1;
   transition: .3s;
+  
 }
 #task-input:focus::placeholder{
   opacity: 0;
@@ -73,44 +73,49 @@ h1{
 .tasks-area{
 
 }
+/* tab ################*/
 .tasks-tabs{
   display: flex;
-  border:1px solid lightgray; 
-   position: relative;
+  position: relative;
+  
  }
  .tasks-tabs div{
   padding:1em;
  }
  #underline{
   height: 4px;
-  background-color: pink;
+  background-color:  rgb(246, 132, 202); 
   position:absolute;
   width: 80px;
   left:0;
   top:40px;
   padding: 0;
  }
+
 #task-board{
-  
   height: 400px;
 }
  .task{
   display: flex;
   justify-content: space-between;
   padding: 1em;
-  border: 1px solid #000;
- }
+  border: 1px solid #eee;
+  border-radius: 5px;
+  font-size: 1.2em;
+  margin-top: 5px;
+  vertical-align: middle; }
  .task-done{
   text-decoration: line-through;
  
  }
  .task-bg{
-  background: aqua;
+  background: #eee;
 
 }
-.add-btn{
-width: 10px;
-height: 10px;
-border: 1px solid #fff;
+.btn{
+
+border:none;
+font-size: 1.2em;
+
 }
  

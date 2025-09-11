@@ -43,16 +43,16 @@ function render() {
         `<div class="task task-bg">
       <div class="task-done">${taskList[i].taskContent}</div>
         <div>
-          <button  onclick="toggleComplete('${taskList[i].id}')"> <i class="fa-sharp fa-solid fa-rotate-left"></i></button>
-          <button onclick="deleteTask('${taskList[i].id}')"><i class="fa-solid fa-trash"></i></button>
+          <button class="btn" onclick="toggleComplete('${taskList[i].id}')"> <i class="fa-sharp fa-solid fa-rotate-left"></i></button>
+          <button class="btn"  onclick="deleteTask('${taskList[i].id}')"><i class="fa-solid fa-trash"></i></button>
         </div >
         </div > `;
     } else {
       resultHtml += `<div class="task">
       <div>${taskList[i].taskContent}</div>
         <div>
-          <button  onclick="toggleComplete('${taskList[i].id}')"> <i class="fa-solid fa-check"></i></i></button>
-          <button onclick="deleteTask('${taskList[i].id}')"><i class="fa-solid fa-trash"></i></button>
+          <button class="btn"  onclick="toggleComplete('${taskList[i].id}')"> <i class="fa-solid fa-check"></i></i></button>
+          <button  class="btn" onclick="deleteTask('${taskList[i].id}')"><i class="fa-solid fa-trash"></i></button>
         </div >
         </div > `
     }
