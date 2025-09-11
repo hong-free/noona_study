@@ -1,9 +1,17 @@
+
 @font-face {
     font-family: 'GyeonggiMillenniumTitle';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2410-3@1.0/TitleV.woff') format('woff');
     font-weight: 800;
     font-display: swap;
 }
+@font-face {
+    font-family: 'Daeojamjil';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/TheJamsil3Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+}
+
 body{
   margin: 0;
   padding: 0;
@@ -77,19 +85,29 @@ h1{
 .tasks-tabs{
   display: flex;
   position: relative;
-  
+  cursor: pointer;
+ 
  }
+.tasks-tabs div:hover{
+
+  color: rgb(198, 29, 40);
+  
+}
+
  .tasks-tabs div{
   padding:1em;
+  font-family: 'Daeojamjil';
+  font-size: 1.2em;
  }
  #underline{
-  height: 4px;
-  background-color:  rgb(246, 132, 202); 
+  height: 2px;
+  background-color:  rgb(12, 176, 77); 
   position:absolute;
-  width: 80px;
+  width: 0px;
   left:0;
-  top:40px;
+  bottom:0;
   padding: 0;
+  transition: .5s;
  }
 
 #task-board{
@@ -113,9 +131,7 @@ h1{
 
 }
 .btn{
-
 border:none;
 font-size: 1.2em;
-
 }
- 
+
