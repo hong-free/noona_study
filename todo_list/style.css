@@ -102,4 +102,15 @@ h1{
  }
  .task-done{
   text-decoration: line-through;
+ 
  }
+ .task-bg{
+  background: aqua;
+
+}
+.add-btn{
+width: 10px;
+height: 10px;
+border: 1px solid #fff;
+}
+ 
