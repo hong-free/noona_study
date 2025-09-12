@@ -16,7 +16,7 @@ function indicator(e) {
 
 }
 
-//tab
+//tab 클릭시
 for (let i = 0; i < tabs.length; i++) {
   tabs[i].addEventListener("click", function (event) { filter(event) }
   )
@@ -52,7 +52,7 @@ function addTask() {
   } else {
     alert('할 일을 입력해주세요!');
   }
-  render();
+  reRender();
 }
 
 //렌더
@@ -97,7 +97,7 @@ function toggleComplete(id) {
       break;
     }
   }
-  render();
+  reRender();
 }
 
 //삭제버튼
@@ -105,12 +105,19 @@ function deleteTask(id) {
   for (let i = 0; i < taskList.length; i++) {
     if (taskList[i].id == id) {
       taskList.splice(i, 1);
+      break;
     }
-  } render()
+  } reRender();
 }
+
+// console.log(taskList);
+
 //필터
 function filter(event) {
   mode = event.target.id
+  reRender();
+}
+function reRender() {
   filterList = []
   if (mode === "all") {
     render()
