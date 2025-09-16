@@ -1,146 +1,147 @@
-let taskInput = document.getElementById("task-input");
-let addButton = document.getElementById("add-button");
-let underline = document.getElementById("underline");
-let taskList = []
-let tabs = document.querySelectorAll(".tasks-tabs div")
-addButton.addEventListener("click", addTask);
-let mode = 'all'
-let filterList = []
+// const API_KEY = `6cd138368d594f358e0f28deaf18ad00`;
+let news = []
 
-tabs.forEach(menu => menu.addEventListener("click", (e) => indicator(e)))
-function indicator(e) {
-
-  underline.style.left = e.currentTarget.offsetLeft + "px";
-  underline.style.width = e.currentTarget.offsetWidth + "px";
-  underline.style.top = e.currentTarget.offsetTop + e.currentTarget.offsetHeight + "px";
-
+const getLatestNews = async () => {
+  // const url = new URL(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${API_KEY}`);
+  const url = new URL(`https://noona-times-be-5ca9402f90d9.herokuapp.com/`);
+  const response = await fetch(url)
+  const data = await response.json()
+  news = data.articles;
+  console.log(news)
 }
-
-//tab 클릭시
-for (let i = 0; i < tabs.length; i++) {
-  tabs[i].addEventListener("click", function (event) { filter(event) }
-  )
-}
-
-
-//입력창에 내용을 넣고 엔터를 치면 내용이 추가된다
-taskInput.addEventListener('keydown', function (e) {
-  if (e.key === 'Enter') {
-    addTask();
-  }
-});
+getLatestNews();
 
 
 
-//추가버튼클릭시 내용추가
-function addTask() {
-  let task = {
-    id: randomIDGenerate(),
-    taskContent: taskInput.value,
-    isComplete: false,
-  }
-  let taskContent = taskInput.value
-  if (taskContent.length > 0) {
-    taskList.push(task)
-  }
-  console.log(taskContent)
 
-  //할일작성후 입력창 비우고, 입력값이 없을시 알림창 띄우기
-  if (taskContent !== '') {
-    taskInput.value = '';
-    taskInput.focus();
-  } else {
-    alert('할 일을 입력해주세요!');
-  }
-  reRender();
-}
 
-//렌더
-function render() {
-  let list = []
-  if (mode === "all") {
-    list = taskList;
-  } else if (mode === "ongoing") {
-    list = filterList;
-  }
-  else if (mode === "done") {
-    list = filterList;
-  }
-  let resultHtml = '';
-  for (let i = 0; i < list.length; i++) {
-    if (list[i].isComplete == true) {
-      resultHtml +=
-        `<div class="task task-bg">
-      <div class="task-done">${list[i].taskContent}</div>
-        <div>
-          <button class="btn" onclick="toggleComplete('${list[i].id}')"> <i class="fa-sharp fa-solid fa-rotate-left"></i></button>
-          <button class="btn"  onclick="deleteTask('${list[i].id}')"><i class="fa-solid fa-trash"></i></button>
-        </div >
-        </div > `;
-    } else {
-      resultHtml += `<div class="task">
-      <div>${list[i].taskContent}</div>
-        <div>
-          <button class="btn"  onclick="toggleComplete('${list[i].id}')"> <i class="fa-solid fa-check"></i></i></button>
-          <button  class="btn" onclick="deleteTask('${list[i].id}')"><i class="fa-solid fa-trash"></i></button>
-        </div >
-        </div > `
-    }
-  }
 
-  document.getElementById("task-board").innerHTML = resultHtml;
-}
-function toggleComplete(id) {
-  for (let i = 0; i < taskList.length; i++) {
-    if (taskList[i].id == id) {
-      taskList[i].isComplete = !taskList[i].isComplete;
-      break;
-    }
-  }
-  reRender();
-}
 
-//삭제버튼
-function deleteTask(id) {
-  for (let i = 0; i < taskList.length; i++) {
-    if (taskList[i].id == id) {
-      taskList.splice(i, 1);
-      break;
-    }
-  } reRender();
-}
 
-// console.log(taskList);
 
-//필터
-function filter(event) {
-  mode = event.target.id
-  reRender();
-}
-function reRender() {
-  filterList = []
-  if (mode === "all") {
-    render()
-  } else if (mode === "ongoing") {
-    for (let i = 0; i < taskList.length; i++) {
-      if (taskList[i].isComplete === false) {
-        filterList.push(taskList[i])
-      }
 
-    }
-    render()
-    console.log("진행중", filterList)
 
-  } else if (mode === "done") {
 
-    for (let i = 0; i < taskList.length; i++) {
-      if (taskList[i].isComplete === true) {
-        filterList.push(taskList[i])
-      }
-    }
-    render()
-  }
-}
-function randomIDGenerate() {
-  return "_" + Math.random().toString(36).substring(2, 9);
-}
+
+
+
+
+
+
+
+
+
+// // const API_KEY = '6cd138368d594f358e0f28deaf18ad00'
+// let newsList = [];
+// const menus = document.querySelectorAll(".menus button")
+// menus.forEach(menus => menus.addEventListener("click", (event) => getNewsByCategory(event)))
+
+// let url = new URL(`https://noona-times-be-5ca9402f90d9.herokuapp.com/`)
+// let totalResults = 0
+// let page = 1
+// const pageSize = 20
+// const groupSize = 5
+
+// const getNews = async () => {
+//   try {
+//     url.searchParams.set("page", page)
+//     url.searchParams.set("pageSize", pageSize)
+//     const response = await fetch(url);
+//     const data = await response.json();
+//     if (response.status === 200) {
+//       if (data.articles.length === 0) {
+//         throw new Error("no result for this search")
+//       }
+//       newsList = data.articles;
+//       totalResults = data.totalResults;
+//       render();
+//       paginationRender();
+//     } else {
+//       throw new Error(data.message)
+//     }
+//   } catch (error) {
+//     errorRender(error.message);
+//   }
+// }
+
+// const getLatestNews = async () => {
+//   url = new URL(`https://noona-times-be-5ca9402f90d9.herokuapp.com/top-headlines?country=kr>`
+//   );
+//   getNews()
+// };
+
+// const getNewsByCategory = async (event) => {
+//   const category = event.target.textContent.toLowerCase();
+//   console.log("category", category);
+//   url = new URL(`https://noona-times-be-5ca9402f90d9.herokuapp.com/top-headlines?country=kr&category=Business`
+//   );
+//   getNews()
+// };
+
+// const getNewsByKeyword = async () => {
+//   const keyword = document.getElementById("serch-input").value;
+//   url = new URL(`https://noona-times-be-5ca9402f90d9.herokuapp.com/top-headlines?q=유재석`
+//   );
+//   getNews()
+// };
+
+// const render = () => {
+//   const newsHTML = newsList.map(
+//     (news) => ` <div class="row news">
+//           <div class="col-lg-4">
+//             <img class="news-img-size"
+//               src=${news.urlToImage}/>
+//           </div>
+//           <div class="col-lg-8">
+//             <h2>${news.title}</h2>
+//             <p>
+//             ${news.description}
+//             </p>
+//             <div>
+//             ${news.source.name} * ${news.publishedAt}
+//             </div>
+//           </div>
+//         </div>`
+//   ).join("");
+//   document.getElementById("news-board").innerHTML = newsHTML;
+// };
+// const errorRender = (errorMessage) => {
+//   const errorHTML = `<div">
+//  ${errorMessage}
+// </div>`;
+//   document.getElementById("news-board").innerHTML = errorHTML
+// }
+
+
+
+// const paginationRender = () => {
+//   const totalPages = Math.ceil(totalResults / pageSize)
+//   const pageGroup = Math.ceil(page / groupSize);
+
+//   let lastPage = pageGroup * groupSize;
+//   if (lastPage > totalPages) {
+//     lastPage = totalPages;
+//   }
+
+
+
+//   const firstPage = lastPage - (groupSize - 1) <= 0 ? 1 : lastPage - (groupSize - 1);
+
+//   let paginationHTML = ``
+
+//   for (let i = firstPage; i <= lastPage; i++) {
+//     paginationHTML += `<li class="page-item ${i === page ? "active" : ''}" onclick="moveToPage(${i})"><a class="page-link">${i}</a></li>`
+//   }
+
+//   document.querySelector(".pagination").innerHTML = paginationHTML
+
+
+// };
+// const moveToPage = (pageNum) => {
+//   console.log(pageNum)
+//   page = pageNum
+//   getNews()
+// }
+
+// getLatestNews();
+
