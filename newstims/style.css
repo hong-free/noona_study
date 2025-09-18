@@ -207,7 +207,7 @@ input[type=text]:focus::placeholder {
   height: 40px;
 }
 .search.active {
-  width:60%;
+  width:70%;
 }
 .searchIcon {
   width: 40px;
@@ -230,7 +230,15 @@ input[type=text] {
  
   font-size: 20px;
 }
+input[type=text]::placeholder {
+  font-size: 12px;
+}
+input[type=text] {
 
+  padding: 0 45px;
+ 
+ 
+}
 }
 
 

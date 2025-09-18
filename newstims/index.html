@@ -17,8 +17,6 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
     />
     <link rel="stylesheet" href="style.css" />
-    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 
     <title>Document</title>
   </head>
@@ -26,7 +24,11 @@
     <div class="container">
       <section class="header">
         <div class="search">
-          <input id="search-input" placeholder="검색은 여기에" type="text" />
+          <input
+            id="search-input"
+            placeholder="검색 내용을 적어주세요"
+            type="text"
+          />
           <button onclick="getNewsByKeyword()" class="searchIcon">
             <i class="fas fa-search"></i>
           </button>
@@ -55,22 +57,7 @@
           <span></span>
         </div>
       </section>
-      <section id="news-board">
-        <div class="row news">
-          <div class="col-lg-4">
-            <img
-              class="news-img-size"
-              src="https://static01.nyt.com/images/2025/09/13/multimedia/13dc-kirk-legacy-vthm/13dc-kirk-legacy-vthm-threeByTwoSmallAt2X.jpg?format=pjpg&quality=75&auto=webp&disable=upscale"
-              alt=""
-            />
-          </div>
-          <div class="col-lg-8">
-            <h2>제목</h2>
-            <p>뉴스타임즈 내용은 여기에 나옴</p>
-            <div>2025.09.14</div>
-          </div>
-        </div>
-      </section>
+      <section id="news-board"></section>
       <!-- <nav nav aria- label="...">
       <ul class="pagination"></ul>
       </nav> -->
@@ -81,6 +68,8 @@
       integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
       crossorigin="anonymous"
     ></script>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="main.js"></script>
   </body>
 </html>

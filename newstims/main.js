@@ -56,6 +56,7 @@ const render = () => {
            ${news.source.name ? news.source.name : "No Sources"}*
             ${moment(news.publishedAt).fromNow()}
           </div>
+          </div>
         </div>`).join('');
 
 
