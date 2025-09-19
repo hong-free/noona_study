@@ -3,36 +3,53 @@ let newsList = []
 const menus = document.querySelectorAll(".menus button")
 console.log(menus)
 menus.forEach(menu => menu.addEventListener("click", (event) => getNewsCategory(event)))
+let url = new URL(`https://noona-times-be-5ca9402f90d9.herokuapp.com/top-headlines`)
+
+const getNews = async () => {
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    if (response.status === 200) {
+      if (data.articles.length === 0) {
+        throw new Error("no result for this search")
+      }
+      newsList = data.articles;
+
+      render();
+
+    } else {
+      throw new Error(data.message)
+    }
+  } catch (error) {
+    console.log(error.message)
+    errorRender(error.message);
+  }
+}
+
+
+
 
 const getLatestNew = async () => {
-  const url = new URL(`https://noona-times-be-5ca9402f90d9.herokuapp.com/top-headlines`)
+  url = new URL(`https://noona-times-be-5ca9402f90d9.herokuapp.com/top-headlines`)
   console.log(url)
-  const response = await fetch(url)
-  const data = await response.json()
-  newsList = data.articles
-  render()
-  console.log(newsList)
+  getNews()
 }
+//카테고리로 불로오기
 const getNewsCategory = async (event) => {
   const category = event.target.textContent.toLowerCase()
   console.log(category)
-  const url = new URL(`https://noona-times-be-5ca9402f90d9.herokuapp.com/top-headlines?country=kr&category=${category}`)
-  const response = await fetch(url)
-  const data = await response.json()
-  newsList = data.articles
-  render()
-
+  url = new URL(`https://noona-times-be-5ca9402f90d9.herokuapp.com/top-headlines?country=kr&category=${category}`)
+  getNews()
 }
+
+//키워드별로 불로오기
 const getNewsByKeyword = async () => {
   const keyword = document.getElementById("search-input").value
 
   console.log(keyword)
-  const url = new URL(`https://noona-times-be-5ca9402f90d9.herokuapp.com/top-headlines?country=kr&q=${keyword}`)
-  const response = await fetch(url)
-  const data = await response.json()
-  newsList = data.articles
+  url = new URL(`https://noona-times-be-5ca9402f90d9.herokuapp.com/top-headlines?country=kr&q=${keyword}`)
+  getNews()
 
-  render()
 }
 
 
@@ -64,6 +81,13 @@ const render = () => {
 
 }
 
+
+const errorRender = (errorMessage) => {
+  const errorHTML = `<div class="alert alert-danger" role="alert">
+ ${errorMessage}
+</div>`;
+  document.getElementById("news-board").innerHTML = errorHTML
+}
 
 
 getLatestNew()
