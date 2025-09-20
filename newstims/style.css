@@ -128,7 +128,19 @@ input[type=text]:focus::placeholder {
   display: none;
    
 }
+.pagination{
+  display: flex;
+  justify-content: center;
+  margin:  20px 0;
+}
 
+.page-item{
+  cursor: pointer;
+
+}
+.page-item a{
+  color: #000;
+}
 
 /*모바일******************/
 @media screen and (max-width:768px){
